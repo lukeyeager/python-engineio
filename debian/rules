@@ -5,7 +5,3 @@ export PYBUILD_NAME=python-engineio
 
 %:
 	dh $@ --parallel --with python2 --buildsystem=pybuild
-
-override_dh_auto_clean:
-	dh_auto_clean
-	rm -rf python_engineio.egg-info .eggs
