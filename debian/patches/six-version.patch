@@ -1,0 +1,14 @@
+Don't require such a high version of six
+Index: python-engineio/setup.py
+===================================================================
+--- python-engineio.orig/setup.py
++++ python-engineio/setup.py
+@@ -24,7 +24,7 @@ setup(
+     include_package_data=True,
+     platforms='any',
+     install_requires=[
+-        'six>=1.9.0',
++        'six',
+     ],
+     tests_require=[
+         'mock',
