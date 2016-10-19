@@ -9,7 +9,7 @@ set -x
 
 cd $ROOT_DIR/packaging/deb
 git fetch --tags
-./build.sh
+DEBIAN_REVISION=1ppa1 ./build.sh
 
 if [ "$TRAVIS_REPO_SLUG" != "lukeyeager/python-engineio" ]; then
     echo Skipping PPA upload for fork $TRAVIS_REPO_SLUG
