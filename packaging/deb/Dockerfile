@@ -23,8 +23,7 @@ WORKDIR /build/python-engineio
 RUN dh_make -y -s -c bsd -d -t `pwd`/packaging/deb/templates \
         -f ../*.orig.tar.gz -p python-engineio_${UPSTREAM_VERSION} \
     && dch --create --package python-engineio -v $DEBIAN_VERSION "v${DEBIAN_VERSION}" \
-    && dch -r "" \
-    && cp -R packaging/deb/extras/* debian/
+    && dch -r ""
 RUN apt-get update \
     && echo y | mk-build-deps -i -r debian/control \
     && rm -rf /var/lib/apt/lists/*
