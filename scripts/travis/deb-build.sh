@@ -28,6 +28,6 @@ fi
 
 gpg --import private.key
 cd dist/*
-debsign *source.changes
+debsign -k 97A4B458 *source.changes
 dput ppa:luke-yeager/ppa *source.changes
 
