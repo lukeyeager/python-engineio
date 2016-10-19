@@ -8,8 +8,7 @@ matrix:
     - TOXENV=py35
     - TOXENV=pypy
     - TOXENV=docs
-    - DEB_BUILD=true
-      addons:
+    - addons:
         apt:
           packages:
             - devscripts
