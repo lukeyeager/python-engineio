@@ -1,12 +1,25 @@
 language: python
-env:
-  - TOXENV=flake8
-  - TOXENV=py27
-  - TOXENV=py33
-  - TOXENV=py34
-  - TOXENV=py35
-  - TOXENV=pypy
-  - TOXENV=docs
+matrix:
+  include:
+    - TOXENV=flake8
+    - TOXENV=py27
+    - TOXENV=py33
+    - TOXENV=py34
+    - TOXENV=py35
+    - TOXENV=pypy
+    - TOXENV=docs
+    - DEB_BUILD=true
+      addons:
+        apt:
+          packages:
+            - devscripts
+            - debhelper
+            - dput
+      install:
+        - openssl aes-256-cbc -K $encrypted_cf9285f88899_key -iv $encrypted_cf9285f88899_iv -in packaging/deb/private.key.enc -out packaging/deb/private.key -d
+      script:
+        - ./scripts/travis/deb-build.sh
+
 install:
   - pip install tox 
 script:
