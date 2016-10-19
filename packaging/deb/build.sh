@@ -48,7 +48,7 @@ echo "DEBIAN_REVISION: $DEBIAN_REVISION"
 # Calculate versions
 ################################################################################
 
-MODULE_VERSION=$(python -c "execfile('${SRC_DIR}/digits/version.py'); print __version__")
+MODULE_VERSION=$(grep version ${SRC_DIR}/setup.py | cut -d"'" -f2)
 echo MODULE_VERSION: $MODULE_VERSION
 GIT_TAG=v${MODULE_VERSION}
 if [ $(git tag -l $GIT_TAG | wc -l) -ne 1 ]; then
@@ -76,14 +76,14 @@ echo DEBIAN_VERSION: $DEBIAN_VERSION
 TARBALL_DIR="${LOCAL_DIR}/tarball/"
 rm -rf $TARBALL_DIR
 mkdir -p $TARBALL_DIR
-git archive --prefix "digits/" -o $TARBALL_DIR/digits.orig.tar.gz HEAD
+git archive --prefix "python-engineio/" -o $TARBALL_DIR/python-engineio.orig.tar.gz HEAD
 
 ################################################################################
 # Build
 ################################################################################
 
 cd $LOCAL_DIR
-DOCKER_BUILD_ID="digits-debuild"
+DOCKER_BUILD_ID="python-engineio-debuild"
 docker build -t $DOCKER_BUILD_ID \
     --build-arg UPSTREAM_VERSION=$UPSTREAM_VERSION \
     --build-arg DEBIAN_VERSION=$DEBIAN_VERSION \

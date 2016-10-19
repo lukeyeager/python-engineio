@@ -19,10 +19,10 @@ ARG DEBIAN_VERSION
 WORKDIR /build
 COPY tarball/* .
 RUN tar -xf *.orig.tar.gz
-WORKDIR /build/digits
+WORKDIR /build/python-engineio
 RUN dh_make -y -s -c bsd -d -t `pwd`/packaging/deb/templates \
-        -f ../*.orig.tar.gz -p digits_${UPSTREAM_VERSION} \
-    && dch --create --package digits -v $DEBIAN_VERSION "v${DEBIAN_VERSION}" \
+        -f ../*.orig.tar.gz -p python-engineio_${UPSTREAM_VERSION} \
+    && dch --create --package python-engineio -v $DEBIAN_VERSION "v${DEBIAN_VERSION}" \
     && dch -r "" \
     && cp -R packaging/deb/extras/* debian/
 RUN apt-get update \

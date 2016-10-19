@@ -1,5 +1,5 @@
 Source: python-engineio
-Maintainer: Luke Yeager <luke.yeager@gmail.com>
+Maintainer: #USERNAME# <#EMAIL#>
 Section: universe/python
 Priority: optional
 Build-depends: debhelper (>= 9), dh-python, python-all, python-setuptools, python-six, python-eventlet, python-mock
