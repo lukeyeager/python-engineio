@@ -1,0 +1,15 @@
+Source: python-engineio
+Maintainer: Luke Yeager <luke.yeager@gmail.com>
+Section: universe/python
+Priority: optional
+Build-depends: debhelper (>= 9), dh-python, python-all, python-setuptools, python-six, python-eventlet, python-mock
+Standards-Version: 3.9.5
+Homepage: http://pythonhosted.org/python-engineio
+Vcs-Browser: https://github.com/miguelgrinberg/python-engineio
+
+Package: python-engineio
+Architecture: all
+Depends: ${python:Depends}, ${misc:Depends}
+Description: Python Engine.IO server
+ This project implements an Engine.IO server that can run standalone or
+ integrated with a Python WSGI application.
