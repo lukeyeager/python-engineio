@@ -1,26 +1,28 @@
+sudo: required
+dist: trusty
+
 language: python
 matrix:
   include:
     - env: TOXENV=flake8
     - env: TOXENV=py27
-    - env: TOXENV=py33
-    - env: TOXENV=py34
-    - env: TOXENV=py35
-    - env: TOXENV=pypy
-    - env: TOXENV=docs
+#    - env: TOXENV=py33
+#    - env: TOXENV=py34
+#    - env: TOXENV=py35
+#    - env: TOXENV=pypy
+#    - env: TOXENV=docs
     - addons:
         apt:
           packages:
             - devscripts
             - debhelper
             - dput
+      services:
+        - docker
       install:
         - openssl aes-256-cbc -K $encrypted_cf9285f88899_key -iv $encrypted_cf9285f88899_iv -in packaging/deb/private.key.enc -out packaging/deb/private.key -d
       script:
         - ./scripts/travis/deb-build.sh
-
-services:
-  - docker
 
 install:
   - pip install tox
